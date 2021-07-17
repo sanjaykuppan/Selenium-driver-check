@@ -55,11 +55,13 @@ class Loaddriver:
                 print("Driver version :"+drivever)
                 self.getdriver()
             finally:
-                sampletest()  
+                if __name__=="__main__":
+                    sampletest()  
 
         else:
             self.getdriver()
-            sampletest()
+            if __name__=="__main__":
+                sampletest()
             
 
 
