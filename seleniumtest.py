@@ -6,8 +6,6 @@ import requests
 import zipfile
 import wget
 
-fname="chromedriver.exe"
-
 class Loaddriver:
 
     def __init__(self):
@@ -39,12 +37,13 @@ class Loaddriver:
             driver.find_element_by_name("btnK").send_keys(Keys.ENTER)
             time.sleep(3)
             driver.quit()
-            print("completed")
+            print("Driver Updated!")
 
         if os.path.isfile(self.fname):
             try:
                 driver=webdriver.Chrome(self.fname)
                 driver.quit()
+                print("Driver latest version already present!")
             except Exception as e:
                 print(e.msg)
                 ind=e.msg.index("browser")
