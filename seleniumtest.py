@@ -32,12 +32,7 @@ class Loaddriver:
             driver=webdriver.Chrome()
             driver.maximize_window()
             driver.get("https://www.google.com/")
-            driver.find_element_by_name("q").send_keys("github")
-            time.sleep(3)
-            driver.find_element_by_name("btnK").send_keys(Keys.ENTER)
-            time.sleep(3)
-            driver.quit()
-            print("Driver Updated!")
+            print("Driver Working fine!")
 
         if os.path.isfile(self.fname):
             try:
