@@ -1,6 +1,5 @@
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys 
-import time
+from selenium.webdriver.chrome.options import Options
 import os.path
 import requests
 import zipfile
@@ -29,14 +28,18 @@ class Loaddriver:
     #check driver version and browser version
     def checkdriver(self):
         def sampletest():
-            driver=webdriver.Chrome()
+            opt = Options()
+            opt.headless = True
+            driver=webdriver.Chrome(options=opt)
             driver.maximize_window()
             driver.get("https://www.google.com/")
             print("Driver Working fine!")
 
         if os.path.isfile(self.fname):
             try:
-                driver=webdriver.Chrome(self.fname)
+                opt = Options()
+                opt.headless = True
+                driver=webdriver.Chrome(self.fname,options=opt)
                 driver.quit()
                 print("Driver latest version already present!")
             except Exception as e:
