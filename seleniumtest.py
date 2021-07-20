@@ -13,6 +13,8 @@ class Loaddriver:
 
     #get latest chrome driver 
     def getdriver(self):
+        if os.path.isdir(self.path) is False:
+            os.mkdir(self.path)
         url = 'https://chromedriver.storage.googleapis.com/LATEST_RELEASE'
         response = requests.get(url)
         version_number = response.text
