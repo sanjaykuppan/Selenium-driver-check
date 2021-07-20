@@ -9,4 +9,4 @@ Place the seleniumtest.py script on project folder to be imported
 
     import seleniumtest
     driverobject=seleniumtest.Loaddriver()
-    driverobject.checkdriver()
+    driverobject.checkdriver() #provide path name here
