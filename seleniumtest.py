@@ -71,7 +71,7 @@ class Loaddriver:
                 print("Driver Working fine!")
             except Exception as e:
                 handle_execpt(e)
-                os._exit(0)
+                
         if os.path.isfile(self.fname):
             try:
                 opt = Options()
@@ -81,7 +81,7 @@ class Loaddriver:
                 print("Driver latest version already present!")
             except Exception as e:
                 handle_execpt(e)
-                os._exit(0)
+                sys.exit()
             finally:
                 if __name__=="__main__":
                     sampletest()     
