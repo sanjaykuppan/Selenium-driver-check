@@ -5,7 +5,7 @@ import os
 import requests
 import zipfile
 import wget
-import sys
+
 
 class Loaddriver:
 
