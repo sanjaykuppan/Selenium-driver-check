@@ -1,9 +1,12 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.common.exceptions import SessionNotCreatedException
 import os.path
+import os
 import requests
 import zipfile
 import wget
+import sys
 
 class Loaddriver:
 
@@ -48,18 +51,31 @@ class Loaddriver:
                 driver.quit()
                 print("Driver latest version already present!")
             except Exception as e:
-                print(e.msg)
+                if e.msg=="unknown error: cannot find Chrome binary":
+                    print(e.msg, "\nPlease install chrome and try again!")
+                    os._exit(0)
+                #print(e.msg)
                 ind=e.msg.index("browser")
                 browserver=e.msg[ind+19:ind+31]
                 ind=e.msg.index("Chrome version")
                 drivever=e.msg[ind+15:ind+17]
                 print("Browser version :"+browserver)
                 print("Driver version :"+drivever)
+                if int(browserver[0:1])<int(drivever):
+                    try:
+                        url = 'https://chromedriver.storage.googleapis.com/LATEST_RELEASE'
+                        response = requests.get(url)
+                        version_number = response.text
+                        print("Update browser to version",version_number[0:2]," and try again!")
+                        os._exit(0)
+                    except:
+                        print("Check internet connection and try again, unable to conenct to internet!!")
+                        os._exit(0)
                 self.getdriver()
             finally:
                 if __name__=="__main__":
                     sampletest()  
-
+                    pass
         else:
             self.getdriver()
             if __name__=="__main__":
